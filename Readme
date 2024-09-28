@@ -1,0 +1,76 @@
+# Smart City Event Management Platform
+
+## Overview
+
+A city-scale event management system supporting millions of user interactions for voting, registration, and results handling using Flask, MongoDB, C++, and AWS.
+
+## Features
+
+- **User Registration**: Secure user sign-up with hashed passwords.
+- **Voting Mechanism**: Users can vote on various events.
+- **Real-time Results**: Live updates of event results using WebSockets.
+- **Performance Optimization**: Multi-threading and optimized database queries.
+- **Scalable Deployment**: Deployed on AWS for dynamic scaling.
+
+## Technologies Used
+
+- **Backend**: Flask, Flask-SocketIO, Gunicorn, Eventlet
+- **Database**: MongoDB (MongoDB Atlas)
+- **Programming Language**: C++ for performance-critical components
+- **Deployment**: AWS Elastic Beanstalk
+- **Others**: Python `threading`, `ctypes` for C++ integration
+
+## Setup Instructions
+
+1. **Clone the Repository**
+
+    ```bash
+    git clone https://github.com/yourusername/smart_city_event_management.git
+    cd smart_city_event_management
+    ```
+
+2. **Set Up Virtual Environment**
+
+    ```bash
+    python3 -m venv venv
+    source venv/bin/activate
+    ```
+
+3. **Install Dependencies**
+
+    ```bash
+    pip install -r requirements.txt
+    ```
+
+4. **Compile C++ Shared Library**
+
+    ```bash
+    g++ -shared -o libcalculator.so -fPIC calculator.cpp
+    ```
+
+5. **Configure MongoDB**
+
+    - Replace `<username>` and `<password>` in `app.py` with your MongoDB Atlas credentials.
+    - Ensure your IP is whitelisted in MongoDB Atlas.
+
+6. **Run the Application**
+
+    ```bash
+    python app.py
+    ```
+
+7. **Access the Application**
+
+    - Open your browser and navigate to `http://localhost:5000/`.
+
+## Deployment
+
+Follow the [Deployment on AWS](#deployment-on-aws) section in the detailed guide to deploy your application on AWS Elastic Beanstalk.
+
+## License
+
+MIT License
+
+## Contact
+
+For any questions or support, please contact [your.email@example.com](mailto:your.email@example.com).
