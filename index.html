@@ -1,0 +1,28 @@
+<!-- index.html -->
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Live Event Results</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.5.4/socket.io.min.js" integrity="sha512-Q1Gmyvf70oG4jpuCeH2dGv+wwYj+1M+6gQ+X4XdrVJPWk5iP8jH1Ey5hQGvXmZs0JhTh5LF4k/1mGBJgHE5Rfg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+</head>
+<body>
+    <h1>Live Event Results</h1>
+    <div id="results">Waiting for updates...</div>
+
+    <script>
+        var socket = io.connect('http://localhost:5000'); // Update with your server URL if different
+        var eventId = prompt("Enter Event ID to join:");
+
+        // Join the room for the specific event
+        socket.emit('join', eventId);
+
+        // Listen for updates
+        socket.on('update', function(data) {
+            if(data.event_id === eventId){
+                document.getElementById('results').innerHTML = JSON.stringify(data.results, null, 2);
+            }
+        });
+    </script>
+</body>
+</html>
